@@ -2,8 +2,10 @@ import AppBar from '@mui/material/AppBar';
 import IconButton from '@mui/material/IconButton';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import ReplayIcon from '@mui/icons-material/Replay';
 import Box from '@mui/material/Box';
+
+import ReplayIcon from '@mui/icons-material/Replay';
+import MenuIcon from '@mui/icons-material/Menu';
 
 export const TopBar = (props) => {
   const { score, setScore, setScoreSheet } = props;
@@ -18,26 +20,34 @@ export const TopBar = (props) => {
     <>
       <AppBar position="fixed">
         <Toolbar>
+          <Box sx={{ flex: 1, display: 'flex', justifyContent: 'flex-start' }}>
+            {/* 例: 左側にメニューアイコンを置く場合 */}
+            <IconButton color="inherit" aria-label="menu" edge="start">
+              <MenuIcon />
+            </IconButton>
+          </Box>
           <Typography
             variant="h6"
             component="div"
             sx={{
-              flexGrow: 1,
               textAlign: 'center',
             }}
           >
             {"Count Up!"}
           </Typography>
-          <IconButton
-            onClick={onClickReplay}
-            size="large"
-            edge="end"
-            color="inherit"
-            aria-label="menu"
-            sx={{ marginLeft: "auto" }}
-          >
-            <ReplayIcon />
-          </IconButton>
+
+          {/* 右領域: IconButtonを配置 */}
+          <Box sx={{ flex: 1, display: 'flex', justifyContent: 'flex-end' }}>
+            <IconButton
+              onClick={onClickReplay}
+              size="large"
+              edge="end" // アイコンボタンを端に寄せる際の推奨プロパティ
+              color="inherit"
+              aria-label="replay"
+            >
+              <ReplayIcon />
+            </IconButton>
+          </Box>
         </Toolbar>
       </AppBar>
     </>

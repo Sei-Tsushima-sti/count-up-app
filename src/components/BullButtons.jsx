@@ -19,8 +19,8 @@ export const BullButtons = (props) => {
         <Button
           variant="contained"
           color="info"
-          size="large"
-          sx={{ width: "25vw" }}
+          size="small"
+          sx={{ width: "37.5vw" }}
           onClick={onClickSbull}
         >
           S-BULL
@@ -30,8 +30,8 @@ export const BullButtons = (props) => {
         <Button
           variant="contained"
           color="success"
-          size="large"
-          sx={{ width: "25vw" }}
+          size="small"
+          sx={{ width: "37.5vw" }}
           onClick={onClickDbull}
         >
           D-BULL

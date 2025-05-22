@@ -11,13 +11,13 @@ export const MissButton = (props) => {
     };
     return (
         <>
-            <Grid container spacing={2} sx={{ mb: 1 }} justifyContent="center">
+            <Grid container spacing={1} sx={{ mb: 1 }} justifyContent="center">
                 <Grid item>
                     <Button
                         variant="text"
                         color="error"
                         size="large"
-                        sx={{ width: "50vw" }}
+                        sx={{ width: "25vw" }}
                         onClick={onClickMissButton}
                     >
                         Miss

@@ -1,5 +1,7 @@
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
+import Box from '@mui/material/Box';
+
 export const MultipleScoreButtons = (props) => {
   const { score, setScore, selectedScore, scoreSheet, setScoreSheet } = props;
   const onClickSingleButton = () => {
