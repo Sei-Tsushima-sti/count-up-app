@@ -18,7 +18,7 @@ export const TopBar = (props) => {
       <Toolbar>
         {/* 中央のタイトル */}
         <Typography
-          variant="h6"
+          variant="h4"
           component="div"
           sx={{
             flexGrow: 1,
