@@ -18,7 +18,6 @@ export const TopBar = (props) => {
     <>
       <AppBar position="fixed">
         <Toolbar>
-          {/* 中央のタイトル */}
           <Typography
             variant="h6"
             component="div"
@@ -29,6 +28,16 @@ export const TopBar = (props) => {
           >
             {"Count Up!"}
           </Typography>
+          <IconButton
+            onClick={onClickReplay}
+            size="large"
+            edge="end"
+            color="inherit"
+            aria-label="menu"
+            sx={{ marginLeft: "auto" }}
+          >
+            <ReplayIcon />
+          </IconButton>
         </Toolbar>
       </AppBar>
     </>

@@ -14,13 +14,13 @@ export const BullButtons = (props) => {
     setScoreSheet([...scoreSheet, newThrowObject]);
   };
   return (
-    <Grid container spacing={2} justifyContent="center">
+    <Grid container spacing={2} sx={{ mb: 2 }} justifyContent="center">
       <Grid item>
         <Button
           variant="contained"
           color="info"
           size="large"
-          sx={{ width: "30vw" }}
+          sx={{ width: "25vw" }}
           onClick={onClickSbull}
         >
           S-BULL
@@ -31,7 +31,7 @@ export const BullButtons = (props) => {
           variant="contained"
           color="success"
           size="large"
-          sx={{ width: "30vw" }}
+          sx={{ width: "25vw" }}
           onClick={onClickDbull}
         >
           D-BULL

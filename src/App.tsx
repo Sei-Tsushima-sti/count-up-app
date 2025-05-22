@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
+import { styled } from '@mui/material/styles';
 
 import { TopBar } from "./components/TopBar.jsx";
 import { TotalScoreDisplay } from "./components/TotalScoreDisplay.jsx";
 import { BullButtons } from "./components/BullButtons.jsx";
 import { ScoreInputColumn } from "./components/ScoreInputColumn.jsx";
 import { MultipleScoreButtons } from "./components/MultipleScoreButtons.jsx";
-import { styled } from '@mui/material/styles';
+import { MissButton } from "./components/MissButton.jsx";
 
 function App() {
   // カラムで選ばれた点数（１～２０）
@@ -49,12 +50,6 @@ function App() {
   return (<MainContent>
     <TopBar score={score} setScore={setScore} setScoreSheet={setScoreSheet} />
     <TotalScoreDisplay score={score} />
-    <BullButtons
-      score={score}
-      setScore={setScore}
-      scoreSheet={scoreSheet}
-      setScoreSheet={setScoreSheet}
-    />
     <ScoreInputColumn
       selectedScore={selectedScore}
       setSelectedScore={setSelectedScore}
@@ -66,6 +61,15 @@ function App() {
       scoreSheet={scoreSheet}
       setScoreSheet={setScoreSheet}
     />
+    <BullButtons
+      score={score}
+      setScore={setScore}
+      scoreSheet={scoreSheet}
+      setScoreSheet={setScoreSheet}
+    />
+    <MissButton
+      scoreSheet={scoreSheet}
+      setScoreSheet={setScoreSheet} />
   </MainContent>);
 }
 

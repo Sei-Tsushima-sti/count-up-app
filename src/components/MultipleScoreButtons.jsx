@@ -28,14 +28,6 @@ export const MultipleScoreButtons = (props) => {
     };
     setScoreSheet([...scoreSheet, newThrowObject]);
   };
-
-  const onClickMissButton = () => {
-    const newThrowObject = {
-      value: 0,
-      label: "Miss",
-    };
-    setScoreSheet([...scoreSheet, newThrowObject]);
-  };
   return (
     <>
       <Grid container spacing={1} sx={{ mb: 1 }} justifyContent="center">
@@ -43,7 +35,7 @@ export const MultipleScoreButtons = (props) => {
           <Button
             variant="outlined"
             size="large"
-            sx={{ width: "30vw" }}
+            sx={{ width: "25vw" }}
             onClick={onClickSingleButton}
           >
             Single
@@ -53,7 +45,7 @@ export const MultipleScoreButtons = (props) => {
           <Button
             variant="outlined"
             size="large"
-            sx={{ width: "30vw" }}
+            sx={{ width: "25vw" }}
             onClick={onClickDoubleButton}
           >
             Double
@@ -63,23 +55,10 @@ export const MultipleScoreButtons = (props) => {
           <Button
             variant="outlined"
             size="large"
-            sx={{ width: "30vw" }}
+            sx={{ width: "25vw" }}
             onClick={onClickTripleButton}
           >
             Triple
-          </Button>
-        </Grid>
-      </Grid>
-      <Grid container spacing={2} justifyContent="center">
-        <Grid item>
-          <Button
-            variant="text"
-            color="error"
-            size="large"
-            sx={{ width: "93vw" }}
-            onClick={onClickMissButton}
-          >
-            Miss
           </Button>
         </Grid>
       </Grid>

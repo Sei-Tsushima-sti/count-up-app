@@ -8,7 +8,7 @@ export const TotalScoreDisplay = (props) => {
   const { score } = props;
 
   return (
-    <Card>
+    <Card sx={{ mb: 2 }}>
       <CardContent>
         <Typography gutterBottom sx={{ color: "text.secondary" }}>
           SCORE
@@ -19,6 +19,6 @@ export const TotalScoreDisplay = (props) => {
           </Typography>
         </CardActions>
       </CardContent>
-    </Card>
+    </Card >
   );
 };

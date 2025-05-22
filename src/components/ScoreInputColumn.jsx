@@ -13,7 +13,7 @@ export const ScoreInputColumn = (props) => {
   };
 
   return (
-    <Grid container sx={{ mb: 1 }} justifyContent="center">
+    <Grid container sx={{ mb: 2 }} justifyContent="center">
       <TextField
         select
         fullWidth
