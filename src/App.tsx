@@ -13,7 +13,7 @@ function App() {
   const [selectedScore, setSelectedScore] = useState(1);
 
   // 何ラウンド目か、何投目か
-  const [roundDisplay, setRoundDisplay] = useState("ROUND 1 ●○○");
+  const [currentScoreInfo, setCurrentScoreInfo] = useState({ round: 1, throwNumberInRound: 1 });
 
   // スコアの合計点
   const [score, setScore] = useState(0);
@@ -29,7 +29,9 @@ function App() {
 
   useEffect(() => {
     if (scoreSheet.length) {
-      console.log(scoreSheet.length + "投目：" + scoreSheet[scoreSheet.length - 1].label);
+      setCurrentScoreInfo({ round: (scoreSheet.length / 3 + 1) | 0, throwNumberInRound: (scoreSheet.length % 3 + 1) });
+      console.log(currentScoreInfo);
+
       console.log(scoreSheet);
 
       // TODO:ラウンド表示
@@ -48,8 +50,8 @@ function App() {
   }));
 
   return (<MainContent>
-    <TopBar score={score} setScore={setScore} setScoreSheet={setScoreSheet} />
-    <TotalScoreDisplay score={score} />
+    <TopBar score={score} setScore={setScore} setScoreSheet={setScoreSheet} setCurrentScoreInfo={setCurrentScoreInfo} />
+    <TotalScoreDisplay score={score} currentScoreInfo={currentScoreInfo} />
     <ScoreInputColumn
       selectedScore={selectedScore}
       setSelectedScore={setSelectedScore}

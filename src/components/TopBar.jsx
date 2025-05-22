@@ -8,10 +8,11 @@ import ReplayIcon from '@mui/icons-material/Replay';
 import MenuIcon from '@mui/icons-material/Menu';
 
 export const TopBar = (props) => {
-  const { score, setScore, setScoreSheet } = props;
+  const { score, setScore, setScoreSheet, setCurrentScoreInfo } = props;
   const onClickReplay = () => {
     setScoreSheet([]);
     setScore(0);
+    setCurrentScoreInfo({ round: 1, throwNumberInRound: 1 });
 
     console.log("点数をリセットしました");
   };
