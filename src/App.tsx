@@ -5,6 +5,7 @@ import { TotalScoreDisplay } from "./components/TotalScoreDisplay.jsx";
 import { BullButtons } from "./components/BullButtons.jsx";
 import { ScoreInputColumn } from "./components/ScoreInputColumn.jsx";
 import { MultipleScoreButtons } from "./components/MultipleScoreButtons.jsx";
+import { styled } from '@mui/material/styles';
 
 function App() {
   // カラムで選ばれた点数（１～２０）
@@ -12,7 +13,7 @@ function App() {
 
   // 何ラウンド目か、何投目か
   const [roundDisplay, setRoundDisplay] = useState("ROUND 1 ●○○");
-  
+
   // スコアの合計点
   const [score, setScore] = useState(0);
 
@@ -26,8 +27,8 @@ function App() {
   };
 
   useEffect(() => {
-    if(scoreSheet.length){
-      console.log(scoreSheet.length + "投目："+scoreSheet[scoreSheet.length-1].label);
+    if (scoreSheet.length) {
+      console.log(scoreSheet.length + "投目：" + scoreSheet[scoreSheet.length - 1].label);
       console.log(scoreSheet);
 
       // TODO:ラウンド表示
@@ -38,27 +39,34 @@ function App() {
     }
   }, [scoreSheet]);
 
-  return (<>
-  <TopBar score={score} setScore={setScore} setScoreSheet={setScoreSheet} />
-  <TotalScoreDisplay score={score} />
-  <BullButtons
-    score={score}
-    setScore={setScore}
-    scoreSheet={scoreSheet}
-    setScoreSheet={setScoreSheet}
-  />
-  <ScoreInputColumn
-    selectedScore={selectedScore}
-    setSelectedScore={setSelectedScore}
-  />
-  <MultipleScoreButtons
-    score={score}
-    setScore={setScore}
-    selectedScore={selectedScore}
-    scoreSheet={scoreSheet}
-    setScoreSheet={setScoreSheet}
-  />
-  </>);
+  // トップバーの下に何も置かないやつ
+  const MainContent = styled('main')(({ theme }) => ({
+    flexGrow: 1,
+    padding: theme.spacing(3),
+    marginTop: theme.mixins.toolbar.minHeight,
+  }));
+
+  return (<MainContent>
+    <TopBar score={score} setScore={setScore} setScoreSheet={setScoreSheet} />
+    <TotalScoreDisplay score={score} />
+    <BullButtons
+      score={score}
+      setScore={setScore}
+      scoreSheet={scoreSheet}
+      setScoreSheet={setScoreSheet}
+    />
+    <ScoreInputColumn
+      selectedScore={selectedScore}
+      setSelectedScore={setSelectedScore}
+    />
+    <MultipleScoreButtons
+      score={score}
+      setScore={setScore}
+      selectedScore={selectedScore}
+      scoreSheet={scoreSheet}
+      setScoreSheet={setScoreSheet}
+    />
+  </MainContent>);
 }
 
 export default App;

@@ -13,21 +13,24 @@ export const TopBar = (props) => {
 
     console.log("点数をリセットしました");
   };
+
   return (
-    <AppBar position="fixed">
-      <Toolbar>
-        {/* 中央のタイトル */}
-        <Typography
-          variant="h4"
-          component="div"
-          sx={{
-            flexGrow: 1,
-            textAlign: 'center', 
-          }}
-        >
-          {"Count Up!"}
-        </Typography>
-      </Toolbar>
-    </AppBar>
+    <>
+      <AppBar position="fixed">
+        <Toolbar>
+          {/* 中央のタイトル */}
+          <Typography
+            variant="h6"
+            component="div"
+            sx={{
+              flexGrow: 1,
+              textAlign: 'center',
+            }}
+          >
+            {"Count Up!"}
+          </Typography>
+        </Toolbar>
+      </AppBar>
+    </>
   );
 };
