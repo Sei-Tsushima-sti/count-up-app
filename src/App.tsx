@@ -21,7 +21,7 @@ import LocalizationProvider from '@mui/lab/LocalizationProvider';
 
 function App() {
 
-  return <div>hello world</div>;
+  return <div>デプロイ成功！！</div>;
 }
 
 export default App;
