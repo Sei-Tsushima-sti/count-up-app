@@ -3,6 +3,7 @@ import IconButton from '@mui/material/IconButton';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import ReplayIcon from '@mui/icons-material/Replay';
+import Box from '@mui/material/Box';
 
 export const TopBar = (props) => {
   const { score, setScore, setScoreSheet } = props;
@@ -13,19 +14,19 @@ export const TopBar = (props) => {
     console.log("点数をリセットしました");
   };
   return (
-    <AppBar position="static">
+    <AppBar position="fixed">
       <Toolbar>
-        <Typography>Count Up Calculator</Typography>
-        <IconButton
-          onClick={onClickReplay}
-          size="large"
-          edge="end"
-          color="inherit"
-          aria-label="menu"
-          sx={{ marginLeft: "auto" }}
+        {/* 中央のタイトル */}
+        <Typography
+          variant="h6"
+          component="div"
+          sx={{
+            flexGrow: 1,
+            textAlign: 'center', 
+          }}
         >
-          <ReplayIcon />
-        </IconButton>
+          {"Count Up!"}
+        </Typography>
       </Toolbar>
     </AppBar>
   );
