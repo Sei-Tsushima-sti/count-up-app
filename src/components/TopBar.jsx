@@ -20,9 +20,7 @@ export const TopBar = (props) => {
       <AppBar position="fixed">
         <Toolbar>
           <Box sx={{ flex: 1, display: 'flex', justifyContent: 'flex-start' }}>
-            <IconButton color="inherit" aria-label="menu" edge="start">
-              <MenuIcon />
-            </IconButton>
+
           </Box>
           <Typography
             variant="h6"

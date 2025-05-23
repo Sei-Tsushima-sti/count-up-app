@@ -7,14 +7,14 @@ export const MultipleScoreButtons = (props) => {
   const onClickSingleButton = () => {
     const newThrowObject = {
       value: selectedScore,
-      label: "Single " + selectedScore,
+      label: "" + selectedScore,
     };
     setScoreSheet([...scoreSheet, newThrowObject]);
   };
   const onClickDoubleButton = () => {
     const newThrowObject = {
       value: selectedScore * 2,
-      label: "Double " + selectedScore,
+      label: "D" + selectedScore,
     };
     setScoreSheet([...scoreSheet, newThrowObject]);
   };
@@ -22,7 +22,7 @@ export const MultipleScoreButtons = (props) => {
   const onClickTripleButton = () => {
     const newThrowObject = {
       value: selectedScore * 3,
-      label: "Triple " + selectedScore,
+      label: "T" + selectedScore,
     };
     setScoreSheet([...scoreSheet, newThrowObject]);
   };
