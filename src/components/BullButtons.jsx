@@ -2,14 +2,12 @@ import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
 
 export const BullButtons = (props) => {
-  const { score, setScore, scoreSheet, setScoreSheet } = props;
+  const { scoreSheet, setScoreSheet } = props;
   const onClickSbull = () => {
-    setScore(score + 25);
     const newThrowObject = { value: 25, label: "S-Bull" };
     setScoreSheet([...scoreSheet, newThrowObject]);
   };
   const onClickDbull = () => {
-    setScore(score + 50);
     const newThrowObject = { value: 50, label: "D-Bull" };
     setScoreSheet([...scoreSheet, newThrowObject]);
   };

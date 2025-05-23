@@ -3,9 +3,8 @@ import Grid from "@mui/material/Grid";
 import Box from '@mui/material/Box';
 
 export const MultipleScoreButtons = (props) => {
-  const { score, setScore, selectedScore, scoreSheet, setScoreSheet } = props;
+  const { selectedScore, scoreSheet, setScoreSheet } = props;
   const onClickSingleButton = () => {
-    setScore(score + selectedScore);
     const newThrowObject = {
       value: selectedScore,
       label: "Single " + selectedScore,
@@ -13,7 +12,6 @@ export const MultipleScoreButtons = (props) => {
     setScoreSheet([...scoreSheet, newThrowObject]);
   };
   const onClickDoubleButton = () => {
-    setScore(score + selectedScore * 2);
     const newThrowObject = {
       value: selectedScore * 2,
       label: "Double " + selectedScore,
@@ -22,8 +20,6 @@ export const MultipleScoreButtons = (props) => {
   };
 
   const onClickTripleButton = () => {
-    setScore(score + selectedScore * 3);
-
     const newThrowObject = {
       value: selectedScore * 3,
       label: "Triple " + selectedScore,

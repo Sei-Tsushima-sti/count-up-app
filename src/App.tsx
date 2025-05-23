@@ -7,38 +7,33 @@ import { BullButtons } from "./components/BullButtons.jsx";
 import { ScoreInputColumn } from "./components/ScoreInputColumn.jsx";
 import { MultipleScoreButtons } from "./components/MultipleScoreButtons.jsx";
 import { MissButton } from "./components/MissButton.jsx";
+import { ResultDialog } from "./components/ResultDialog.jsx";
 
 function App() {
   // カラムで選ばれた点数（１～２０）
   const [selectedScore, setSelectedScore] = useState(1);
 
-  // 何ラウンド目か、何投目か
-  const [currentScoreInfo, setCurrentScoreInfo] = useState({ round: 1, throwNumberInRound: 1 });
-
   // スコアの合計点
+  // useEffectでscoreSheetから自動反映
   const [score, setScore] = useState(0);
 
   // スコアシート、1ラウンドに何点取ったかみたいな
   const [scoreSheet, setScoreSheet] = useState([]);
 
-  // ８ラウンド終了したときに発火
-  const isGameSetHandle = () => {
-    //setScoreSheet([]);
-    //setScore(0);
-  };
+  // 結果表示ダイアログのフラグ
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   useEffect(() => {
-    if (scoreSheet.length) {
-      setCurrentScoreInfo({ round: (scoreSheet.length / 3 + 1) | 0, throwNumberInRound: (scoreSheet.length % 3 + 1) });
-      console.log(currentScoreInfo);
+    const propertyToSum = "value";
+    const sum = scoreSheet.reduce((accumulator, currentObject) => {
+      return accumulator + currentObject[propertyToSum];
+    }, 0);
+    setScore(sum);
 
-      console.log(scoreSheet);
-
-      // TODO:ラウンド表示
-    }
-
+    // 24投で発火
     if (scoreSheet.length === 24) {
-      isGameSetHandle();
+      setIsDialogOpen(true);
+      return;
     }
   }, [scoreSheet]);
 
@@ -50,28 +45,35 @@ function App() {
   }));
 
   return (<MainContent>
-    <TopBar score={score} setScore={setScore} setScoreSheet={setScoreSheet} setCurrentScoreInfo={setCurrentScoreInfo} />
-    <TotalScoreDisplay score={score} currentScoreInfo={currentScoreInfo} />
+    <TopBar
+      score={score}
+      scoreSheet={scoreSheet}
+      setScoreSheet={setScoreSheet}
+    />
+    <TotalScoreDisplay score={score} />
     <ScoreInputColumn
       selectedScore={selectedScore}
       setSelectedScore={setSelectedScore}
     />
     <MultipleScoreButtons
-      score={score}
-      setScore={setScore}
       selectedScore={selectedScore}
       scoreSheet={scoreSheet}
       setScoreSheet={setScoreSheet}
     />
     <BullButtons
-      score={score}
-      setScore={setScore}
       scoreSheet={scoreSheet}
       setScoreSheet={setScoreSheet}
     />
     <MissButton
       scoreSheet={scoreSheet}
-      setScoreSheet={setScoreSheet} />
+      setScoreSheet={setScoreSheet}
+    />
+    <ResultDialog
+      isDialogOpen={isDialogOpen}
+      setIsDialogOpen={setIsDialogOpen}
+      score={score}
+      setScoreSheet={setScoreSheet}
+    />
   </MainContent>);
 }
 

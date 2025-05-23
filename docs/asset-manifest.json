@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/count-up-app/static/js/main.c41530fb.js",
+    "main.js": "/count-up-app/static/js/main.2c3289aa.js",
     "index.html": "/count-up-app/index.html",
-    "main.c41530fb.js.map": "/count-up-app/static/js/main.c41530fb.js.map"
+    "main.2c3289aa.js.map": "/count-up-app/static/js/main.2c3289aa.js.map"
   },
   "entrypoints": [
-    "static/js/main.c41530fb.js"
+    "static/js/main.2c3289aa.js"
   ]
 }

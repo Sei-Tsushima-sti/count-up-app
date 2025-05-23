@@ -8,13 +8,11 @@ import ReplayIcon from '@mui/icons-material/Replay';
 import MenuIcon from '@mui/icons-material/Menu';
 
 export const TopBar = (props) => {
-  const { score, setScore, setScoreSheet, setCurrentScoreInfo } = props;
+  const { scoreSheet, setScoreSheet } = props;
   const onClickReplay = () => {
-    setScoreSheet([]);
-    setScore(0);
-    setCurrentScoreInfo({ round: 1, throwNumberInRound: 1 });
-
-    console.log("点数をリセットしました");
+    if (scoreSheet.length) {
+      setScoreSheet(scoreSheet.slice(0, -1));
+    }
   };
 
   return (
@@ -22,7 +20,6 @@ export const TopBar = (props) => {
       <AppBar position="fixed">
         <Toolbar>
           <Box sx={{ flex: 1, display: 'flex', justifyContent: 'flex-start' }}>
-            {/* 例: 左側にメニューアイコンを置く場合 */}
             <IconButton color="inherit" aria-label="menu" edge="start">
               <MenuIcon />
             </IconButton>
@@ -42,7 +39,7 @@ export const TopBar = (props) => {
             <IconButton
               onClick={onClickReplay}
               size="large"
-              edge="end" // アイコンボタンを端に寄せる際の推奨プロパティ
+              edge="end"
               color="inherit"
               aria-label="replay"
             >
