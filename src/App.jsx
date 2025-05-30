@@ -33,7 +33,6 @@ function App() {
 
   // トップバーの下に何も置かないやつ
   const MainContent = styled('main')(({ theme }) => ({
-    flexGrow: 1,
     padding: theme.spacing(3),
     marginTop: theme.spacing(6),
     marginBottom: theme.spacing(4),

@@ -72,13 +72,10 @@ export const ResultDialog = (props) => {
                     sx={{
                         display: 'flex',
                         flexDirection: 'column',
-                        alignItems: 'center',    // 横方向の中央揃え
-                        justifyContent: 'center', // 縦方向の中央揃え
-                        textAlign: 'center',    // テキストの中央揃え
-                        flexGrow: 1,            // DialogContentが利用可能な高さを占めるようにする
-                        // DialogContentに十分な高さがないと上下中央揃えが分かりにくい場合があります。
-                        // Dialog自体にminHeightを設定するか、内容に応じて高さが確保されるようにしてください。
-                        // 例: minHeight: '200px' (コンテンツがこれより小さい場合)
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        textAlign: 'center',
+                        flexGrow: 1,
                     }}>
                     <DialogContentText sx={{ fontSize: '8rem' }}>
                         {CalcTotalScore(scoreSheet)}
