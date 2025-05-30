@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { styled } from '@mui/material/styles';
-
 import { TopBar } from "./components/TopBar.jsx";
 import { TotalScoreCard } from "./components/TotalScoreCard.jsx";
 import { BullButtons } from "./components/BullButtons.jsx";
@@ -9,6 +8,7 @@ import { MultipleScoreButtons } from "./components/MultipleScoreButtons.jsx";
 import { MissButton } from "./components/MissButton.jsx";
 import { ResultDialog } from "./components/ResultDialog.jsx";
 import { ScoreTable, ScoreTableSingle } from "./components/ScoreTable.jsx";
+import { BottomNavi } from "./components/BottomNavi.jsx";
 
 function App() {
   // カラムで選ばれた点数（１～２０）
@@ -19,6 +19,9 @@ function App() {
 
   // リザルト表示フラグ
   const [resultOpen, setResultOpen] = useState(false);
+
+  // 現在のタブ
+  const [activePage, setActivePage] = useState(0);
 
   useEffect(() => {
     // 24投で発火
@@ -32,42 +35,61 @@ function App() {
   const MainContent = styled('main')(({ theme }) => ({
     flexGrow: 1,
     padding: theme.spacing(3),
-    marginTop: theme.mixins.toolbar.minHeight,
+    marginTop: theme.spacing(6),
+    marginBottom: theme.spacing(4),
   }));
 
-  return (<MainContent>
-    <ScoreTableSingle
-      scoreSheet={scoreSheet} />
+  // タブ切り替え
+  const renderActivePage = (activePage) => {
+    if (activePage == "0") {
+      console.log("00");
+    }
+    if (activePage == 1) {
+      console.log("11");
+    }
+  }
+
+  return (<>
     <TopBar
       scoreSheet={scoreSheet}
       setScoreSheet={setScoreSheet}
     />
-    <TotalScoreCard scoreSheet={scoreSheet} />
-    <ScoreInputColumn
-      selectedScore={selectedScore}
-      setSelectedScore={setSelectedScore}
-    />
-    <MultipleScoreButtons
-      selectedScore={selectedScore}
-      scoreSheet={scoreSheet}
-      setScoreSheet={setScoreSheet}
-    />
-    <BullButtons
-      scoreSheet={scoreSheet}
-      setScoreSheet={setScoreSheet}
-    />
-    <MissButton
-      scoreSheet={scoreSheet}
-      setScoreSheet={setScoreSheet}
-    />
-    <ResultDialog
-      resultOpen={resultOpen}
-      setResultOpen={setResultOpen}
-      scoreSheet={scoreSheet}
-      setScoreSheet={setScoreSheet}
-    />
-    <ScoreTable scoreSheet={scoreSheet} />
-  </MainContent>);
+    <MainContent>
+      <ScoreTableSingle
+        scoreSheet={scoreSheet} />
+
+      <TotalScoreCard scoreSheet={scoreSheet} />
+      <ScoreInputColumn
+        selectedScore={selectedScore}
+        setSelectedScore={setSelectedScore}
+      />
+      <MultipleScoreButtons
+        selectedScore={selectedScore}
+        scoreSheet={scoreSheet}
+        setScoreSheet={setScoreSheet}
+      />
+      <BullButtons
+        scoreSheet={scoreSheet}
+        setScoreSheet={setScoreSheet}
+      />
+      <MissButton
+        scoreSheet={scoreSheet}
+        setScoreSheet={setScoreSheet}
+      />
+      <ResultDialog
+        resultOpen={resultOpen}
+        setResultOpen={setResultOpen}
+        scoreSheet={scoreSheet}
+        setScoreSheet={setScoreSheet}
+      />
+      <ScoreTable scoreSheet={scoreSheet} />
+    </MainContent>
+    {renderActivePage()}
+
+    <BottomNavi
+      activePage={activePage}
+      setActivePage={setActivePage} />
+  </>);
 }
 
 export default App;
