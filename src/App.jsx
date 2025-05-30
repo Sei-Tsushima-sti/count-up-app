@@ -14,26 +14,16 @@ function App() {
   // カラムで選ばれた点数（１～２０）
   const [selectedScore, setSelectedScore] = useState(1);
 
-  // スコアの合計点
-  // useEffectでscoreSheetから自動反映
-  const [score, setScore] = useState(0);
-
   // スコアシート、1ラウンドに何点取ったかみたいな
   const [scoreSheet, setScoreSheet] = useState([]);
 
-  // 結果表示ダイアログのフラグ
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  // リザルト表示フラグ
+  const [resultOpen, setResultOpen] = useState(false);
 
   useEffect(() => {
-    const propertyToSum = "value";
-    const sum = scoreSheet.reduce((accumulator, currentObject) => {
-      return accumulator + currentObject[propertyToSum];
-    }, 0);
-    setScore(sum);
-
     // 24投で発火
     if (scoreSheet.length === 24) {
-      setIsDialogOpen(true);
+      setResultOpen(true); // リザルト表示
       return;
     }
   }, [scoreSheet]);
@@ -49,11 +39,10 @@ function App() {
     <ScoreTableSingle
       scoreSheet={scoreSheet} />
     <TopBar
-      score={score}
       scoreSheet={scoreSheet}
       setScoreSheet={setScoreSheet}
     />
-    <TotalScoreCard score={score} />
+    <TotalScoreCard scoreSheet={scoreSheet} />
     <ScoreInputColumn
       selectedScore={selectedScore}
       setSelectedScore={setSelectedScore}
@@ -72,9 +61,9 @@ function App() {
       setScoreSheet={setScoreSheet}
     />
     <ResultDialog
-      isDialogOpen={isDialogOpen}
-      setIsDialogOpen={setIsDialogOpen}
-      score={score}
+      resultOpen={resultOpen}
+      setResultOpen={setResultOpen}
+      scoreSheet={scoreSheet}
       setScoreSheet={setScoreSheet}
     />
     <ScoreTable scoreSheet={scoreSheet} />
