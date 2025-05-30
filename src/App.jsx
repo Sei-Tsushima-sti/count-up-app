@@ -40,12 +40,44 @@ function App() {
   }));
 
   // タブ切り替え
-  const renderActivePage = (activePage) => {
-    if (activePage == "0") {
-      console.log("00");
+  const renderActivePage = () => {
+    if (activePage == 0) {
+      return (
+        <MainContent>
+          <ScoreTableSingle
+            scoreSheet={scoreSheet} />
+
+          <TotalScoreCard scoreSheet={scoreSheet} />
+          <ScoreInputColumn
+            selectedScore={selectedScore}
+            setSelectedScore={setSelectedScore}
+          />
+          <MultipleScoreButtons
+            selectedScore={selectedScore}
+            scoreSheet={scoreSheet}
+            setScoreSheet={setScoreSheet}
+          />
+          <BullButtons
+            scoreSheet={scoreSheet}
+            setScoreSheet={setScoreSheet}
+          />
+          <MissButton
+            scoreSheet={scoreSheet}
+            setScoreSheet={setScoreSheet}
+          />
+          <ResultDialog
+            resultOpen={resultOpen}
+            setResultOpen={setResultOpen}
+            scoreSheet={scoreSheet}
+            setScoreSheet={setScoreSheet}
+          />
+        </MainContent>);
     }
     if (activePage == 1) {
-      console.log("11");
+      return (
+        <MainContent>
+          <ScoreTable scoreSheet={scoreSheet} />
+        </MainContent>);
     }
   }
 
@@ -54,38 +86,7 @@ function App() {
       scoreSheet={scoreSheet}
       setScoreSheet={setScoreSheet}
     />
-    <MainContent>
-      <ScoreTableSingle
-        scoreSheet={scoreSheet} />
-
-      <TotalScoreCard scoreSheet={scoreSheet} />
-      <ScoreInputColumn
-        selectedScore={selectedScore}
-        setSelectedScore={setSelectedScore}
-      />
-      <MultipleScoreButtons
-        selectedScore={selectedScore}
-        scoreSheet={scoreSheet}
-        setScoreSheet={setScoreSheet}
-      />
-      <BullButtons
-        scoreSheet={scoreSheet}
-        setScoreSheet={setScoreSheet}
-      />
-      <MissButton
-        scoreSheet={scoreSheet}
-        setScoreSheet={setScoreSheet}
-      />
-      <ResultDialog
-        resultOpen={resultOpen}
-        setResultOpen={setResultOpen}
-        scoreSheet={scoreSheet}
-        setScoreSheet={setScoreSheet}
-      />
-      <ScoreTable scoreSheet={scoreSheet} />
-    </MainContent>
     {renderActivePage()}
-
     <BottomNavi
       activePage={activePage}
       setActivePage={setActivePage} />

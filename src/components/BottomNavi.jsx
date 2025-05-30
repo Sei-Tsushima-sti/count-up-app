@@ -32,7 +32,6 @@ export const BottomNavi = (props) => {
             >
                 <BottomNavigationAction label="Home" icon={<HomeIcon />} />
                 <BottomNavigationAction label="Scoresheet" icon={<GridOnIcon />} />
-                <BottomNavigationAction label="Settings" icon={<SettingsIcon />} />
             </BottomNavigation>
         </Box>
     );
