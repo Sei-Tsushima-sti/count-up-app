@@ -6,31 +6,28 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import Grid from "@mui/material/Grid";
+
+// スコア行生成関数
+const generateScoreRows = (scoreSheet) => {
+    if (!scoreSheet || !scoreSheet.length) {
+        return [];
+    }
+    const scoreSheetLabel = scoreSheet.map(l => l.label);
+
+    const rows = [];
+    for (let i = 0; i < scoreSheetLabel.length; i += 3) {
+        const chunk = scoreSheetLabel.slice(i, i + 3);
+        rows.push(chunk);
+    }
+    return rows;
+};
 
 export const ScoreTable = (props) => {
     const { scoreSheet } = props;
 
-    const createScoreRows = () => {
-        if (!scoreSheet || !scoreSheet.length) {
-            return [];
-        }
-        const scoreSheetLabel = scoreSheet.map(l => {
-            return l.label;
-        });
-
-        const rows = [];
-        for (let i = 0; i < scoreSheetLabel.length; i += 3) {
-            const chunk = scoreSheetLabel.slice(i, i + 3);
-            rows.push(chunk);
-        }
-        return rows;
-    }
-
-    // 1. createScoreRows() を一度だけ呼び出し、現在のデータ行とその数を取得
-    const actualDataRows = createScoreRows();
+    const actualDataRows = generateScoreRows(scoreSheet);
     const actualDataRowCount = actualDataRows.length;
-    const minTotalRows = 8; // 表示したい最小行数（枠の数）
+    const minTotalRows = 8;
 
     return (
         <TableContainer component={Paper} sx={{ mb: 2 }}>
@@ -63,9 +60,9 @@ export const ScoreTable = (props) => {
                                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                             >
                                 <TableCell component="th" scope="row">
-                                    {`R${actualDataRowCount + emptyRowIndex + 1}`} {/* 行番号を継続 */}
+                                    {`R${actualDataRowCount + emptyRowIndex + 1}`}
                                 </TableCell>
-                                <TableCell align="right">&nbsp;</TableCell> {/* 空のセル */}
+                                <TableCell align="right">&nbsp;</TableCell>
                                 <TableCell align="right">&nbsp;</TableCell>
                                 <TableCell align="right">&nbsp;</TableCell>
                             </TableRow>
@@ -79,27 +76,11 @@ export const ScoreTable = (props) => {
 export const ScoreTableSingle = (props) => {
     const { scoreSheet } = props;
 
-    const createScoreRows = () => {
-        if (!scoreSheet || !scoreSheet.length) {
-            return [];
-        }
-        const scoreSheetLabel = scoreSheet.map(l => {
-            return l.label;
-        });
-
-        const rows = [];
-        for (let i = 0; i < scoreSheetLabel.length; i += 3) {
-            const chunk = scoreSheetLabel.slice(i, i + 3);
-            rows.push(chunk);
-        }
-        rows.splice(0, rows.length - 1);
-        return rows;
-    }
-
-    // 1. createScoreRows() を一度だけ呼び出し、現在のデータ行とその数を取得
-    const actualDataRows = createScoreRows();
+    const allDataRows = generateScoreRows(scoreSheet);
+    const actualDataRows = allDataRows.splice(allDataRows.length - 1, allDataRows.length);
     const actualDataRowCount = actualDataRows.length;
-    const minTotalRows = 8; // 表示したい最小行数（枠の数）
+    const minTotalRows = 1;
+    const nowRound = allDataRows.length;
 
     return (
         <TableContainer component={Paper} sx={{ mb: 2 }}>
@@ -108,37 +89,37 @@ export const ScoreTableSingle = (props) => {
                 tableLayout: 'fixed'  // 列幅を固定レイアウトにするキープロパティ
             }}>
                 <TableBody>
-
                     {/* 実際のデータ行をレンダリング */}
-
                     {actualDataRows.map((row, index) => (
-
                         <TableRow
-
                             key={`row-${index}`}
-
                             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-
                         >
-
                             <TableCell component="th" scope="row">
-
-                                {`R${1 + (scoreSheet.length - 1) / 3 | 0}`}
-
+                                {`R${nowRound + 1}`}
                             </TableCell>
-
                             {/* rowオブジェクトの構造に合わせてデータを表示 */}
-
-                            <TableCell align="right">{row[0]}</TableCell>
-
+                            < TableCell align="right" > {row[0]}</TableCell>
                             <TableCell align="right">{row[1]}</TableCell>
-
                             <TableCell align="right">{row[2]}</TableCell>
-
                         </TableRow>
-
                     ))}
 
+                    {/* データ行が最小行数に満たない場合、空行で埋める */}
+                    {actualDataRowCount < minTotalRows &&
+                        Array.from({ length: minTotalRows - actualDataRowCount }).map((_, emptyRowIndex) => (
+                            <TableRow
+                                key={`empty-row-${actualDataRowCount + emptyRowIndex}`}
+                                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                            >
+                                <TableCell component="th" scope="row">
+                                    {`R${actualDataRowCount + emptyRowIndex + 1}`}
+                                </TableCell>
+                                <TableCell align="right">&nbsp;</TableCell>
+                                <TableCell align="right">&nbsp;</TableCell>
+                                <TableCell align="right">&nbsp;</TableCell>
+                            </TableRow>
+                        ))}
                 </TableBody>
             </Table >
         </TableContainer >

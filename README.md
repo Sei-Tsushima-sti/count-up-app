@@ -1,3 +1,8 @@
-# count-up-app
+# Count Up!
+ダーツの点数を数えるやつ
+ソロ投げ用
 
-[Edit in StackBlitz next generation editor ⚡️](https://stackblitz.com/~/github.com/Sei-Tsushima-sti/count-up-app)
+# 追加したい機能
+- selectから階層的にsingle, double, tripleを選べるようにする
+- ボトムバーからスコアシートとか
+- ちゃんとしたリザルト画面

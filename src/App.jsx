@@ -46,6 +46,8 @@ function App() {
   }));
 
   return (<MainContent>
+    <ScoreTableSingle
+      scoreSheet={scoreSheet} />
     <TopBar
       score={score}
       scoreSheet={scoreSheet}
