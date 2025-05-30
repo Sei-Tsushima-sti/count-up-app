@@ -30,11 +30,19 @@ export const ScoreTable = (props) => {
     const minTotalRows = 8;
 
     return (
-        <TableContainer component={Paper} sx={{ mb: 2 }}>
+        <TableContainer component={Paper}>
             <Table aria-label="simple table" sx={{
                 width: '100%',        // テーブル全体の幅を100%に
                 tableLayout: 'fixed'  // 列幅を固定レイアウトにするキープロパティ
             }}>
+                <TableHead>
+                    <TableRow>
+                        <TableCell>Round</TableCell>
+                        <TableCell align="right">1st</TableCell>
+                        <TableCell align="right">2nd</TableCell>
+                        <TableCell align="right">3rd</TableCell>
+                    </TableRow>
+                </TableHead>
                 <TableBody>
                     {/* 実際のデータ行をレンダリング */}
                     {actualDataRows.map((row, index) => (
