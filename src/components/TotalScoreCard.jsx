@@ -2,7 +2,7 @@ import Typography from '@mui/material/Typography';
 import Card from '@mui/material/Card';
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
-import { CalcTotalScore } from "./CalcTotalScore.jsx";
+import { CalcTotalScore } from "./utils/CalcTotalScore.jsx";
 
 // 合計スコア表示
 export const TotalScoreCard = (props) => {

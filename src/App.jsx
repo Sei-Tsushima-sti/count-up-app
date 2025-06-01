@@ -1,18 +1,23 @@
 import { useState, useEffect } from "react";
 import { styled } from '@mui/material/styles';
-import { TopBar } from "./components/TopBar.jsx";
 import { TotalScoreCard } from "./components/TotalScoreCard.jsx";
-import { BullButtons } from "./components/BullButtons.jsx";
 import { ScoreInputColumn } from "./components/ScoreInputColumn.jsx";
-import { MultipleScoreButtons } from "./components/MultipleScoreButtons.jsx";
-import { MissButton } from "./components/MissButton.jsx";
 import { ResultDialog } from "./components/ResultDialog.jsx";
 import { ScoreTable, ScoreTableSingle } from "./components/ScoreTable.jsx";
-import { BottomNavi } from "./components/BottomNavi.jsx";
+
+import { MultipleScoreButtons } from "./components/buttons/MultipleScoreButtons.jsx";
+import { BullButtons } from "./components/buttons/BullButtons.jsx";
+import { MissButton } from "./components/buttons/MissButton.jsx";
+
+import { TopBar } from "./components/bars/TopBar.jsx";
+import { BotBar } from "./components/bars/BotBar.jsx";
 
 function App() {
-  // カラムで選ばれた点数（１～２０）
-  const [selectedScore, setSelectedScore] = useState(1);
+  // カラムの開閉フラグ
+  const [selectOpen, setSelectOpen] = useState(false);
+
+  // 何倍か
+  const [ratio, setRatio] = useState(1);
 
   // スコアシート、1ラウンドに何点取ったかみたいな
   const [scoreSheet, setScoreSheet] = useState([]);
@@ -22,6 +27,7 @@ function App() {
 
   // 現在のタブ
   const [activePage, setActivePage] = useState(0);
+
 
   useEffect(() => {
     // 24投で発火
@@ -48,13 +54,16 @@ function App() {
 
           <TotalScoreCard scoreSheet={scoreSheet} />
           <ScoreInputColumn
-            selectedScore={selectedScore}
-            setSelectedScore={setSelectedScore}
-          />
-          <MultipleScoreButtons
-            selectedScore={selectedScore}
+            selectOpen={selectOpen}
+            setSelectOpen={setSelectOpen}
             scoreSheet={scoreSheet}
             setScoreSheet={setScoreSheet}
+            ratio={ratio}
+            setRatio={setRatio}
+          />
+          <MultipleScoreButtons
+            setSelectOpen={setSelectOpen}
+            setRatio={setRatio}
           />
           <BullButtons
             scoreSheet={scoreSheet}
@@ -86,7 +95,7 @@ function App() {
       setScoreSheet={setScoreSheet}
     />
     {renderActivePage()}
-    <BottomNavi
+    <BotBar
       activePage={activePage}
       setActivePage={setActivePage} />
   </>);

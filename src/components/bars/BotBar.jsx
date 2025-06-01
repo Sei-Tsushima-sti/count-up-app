@@ -10,7 +10,7 @@ import GridOnIcon from '@mui/icons-material/GridOn';
 import HomeIcon from '@mui/icons-material/Home';
 import SettingsIcon from '@mui/icons-material/Settings';
 
-export const BottomNavi = (props) => {
+export const BotBar = (props) => {
     const { activePage, setActivePage } = props;
     return (
         <Box

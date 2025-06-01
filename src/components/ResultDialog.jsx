@@ -15,7 +15,7 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import CloseIcon from '@mui/icons-material/Close';
 import Fade from '@mui/material/Fade';
-import { CalcTotalScore } from "./CalcTotalScore.jsx";
+import { CalcTotalScore } from "./utils/CalcTotalScore.jsx";
 
 
 export const ResultDialog = (props) => {

@@ -3,28 +3,19 @@ import Grid from "@mui/material/Grid";
 import Box from '@mui/material/Box';
 
 export const MultipleScoreButtons = (props) => {
-  const { selectedScore, scoreSheet, setScoreSheet } = props;
+  const { setSelectOpen, setRatio } = props;
   const onClickSingleButton = () => {
-    const newThrowObject = {
-      value: selectedScore,
-      label: "" + selectedScore,
-    };
-    setScoreSheet([...scoreSheet, newThrowObject]);
+    setRatio(1);
+    setSelectOpen(true);
   };
   const onClickDoubleButton = () => {
-    const newThrowObject = {
-      value: selectedScore * 2,
-      label: "D" + selectedScore,
-    };
-    setScoreSheet([...scoreSheet, newThrowObject]);
+    setRatio(2);
+    setSelectOpen(true);
   };
 
   const onClickTripleButton = () => {
-    const newThrowObject = {
-      value: selectedScore * 3,
-      label: "T" + selectedScore,
-    };
-    setScoreSheet([...scoreSheet, newThrowObject]);
+    setRatio(3);
+    setSelectOpen(true);
   };
   return (
     <>

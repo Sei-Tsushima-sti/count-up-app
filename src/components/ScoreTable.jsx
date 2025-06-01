@@ -92,10 +92,7 @@ export const ScoreTableSingle = (props) => {
 
     return (
         <TableContainer component={Paper} sx={{ mb: 2 }}>
-            <Table aria-label="simple table" sx={{
-                width: '100%',        // テーブル全体の幅を100%に
-                tableLayout: 'fixed'  // 列幅を固定レイアウトにするキープロパティ
-            }}>
+            <Table sx={{ tableLayout: 'fixed' }}>
                 <TableBody>
                     {/* 実際のデータ行をレンダリング */}
                     {actualDataRows.map((row, index) => (
