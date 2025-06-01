@@ -56,11 +56,8 @@ export const ScoreInputColumn = (props) => {
       sx={{ display: 'none' }}
       MenuProps={{
         PaperProps: {
-          // TODO:ここの幅指定方法これでええんか？？
           sx: {
             width: '95vw',
-            height: '85vh',
-            marginTop: '10vw'
           },
         }
       }}
