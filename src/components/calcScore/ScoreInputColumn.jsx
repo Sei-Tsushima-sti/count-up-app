@@ -2,6 +2,7 @@ import { useState } from "react";
 import Select from '@mui/material/Select';
 import MenuItem from "@mui/material/MenuItem";
 import Grid from "@mui/material/Grid";
+import Fade from "@mui/material/Fade";
 
 // スコア入力
 const firstSelectList = [...Array(20)].map((v, i) => i + 1);

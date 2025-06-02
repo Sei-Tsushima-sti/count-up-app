@@ -1,13 +1,14 @@
 import { useState, useEffect } from "react";
 import { styled } from '@mui/material/styles';
-import { TotalScoreCard } from "./components/TotalScoreCard.jsx";
-import { ScoreInputColumn } from "./components/ScoreInputColumn.jsx";
-import { ResultDialog } from "./components/ResultDialog.jsx";
-import { ScoreTable, ScoreTableSingle } from "./components/ScoreTable.jsx";
 
-import { MultipleScoreButtons } from "./components/buttons/MultipleScoreButtons.jsx";
-import { BullButtons } from "./components/buttons/BullButtons.jsx";
-import { MissButton } from "./components/buttons/MissButton.jsx";
+import { ScoreInputColumn } from "./components/calcScore/ScoreInputColumn.jsx";
+import { MultipleScoreButtons } from "./components/calcScore/MultipleScoreButtons.jsx";
+import { BullButtons } from "./components/calcScore/BullButtons.jsx";
+import { MissButton } from "./components/calcScore/MissButton.jsx";
+
+import { TotalScoreCard } from "./displayScore/TotalScoreCard.jsx";
+import { ResultDialog } from "./displayScore/ResultDialog.jsx";
+import { ScoreTable, ScoreTableSingle } from "./displayScore/ScoreTable.jsx";
 
 import { TopBar } from "./components/bars/TopBar.jsx";
 import { BotBar } from "./components/bars/BotBar.jsx";
